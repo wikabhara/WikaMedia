@@ -1,8 +1,8 @@
 import React from "react";
-import Wmedialogo from "@/assets/img/Wmedia1.png";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDropdown } from "react-icons/io";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -34,7 +34,13 @@ export default function Navbar() {
       </div>
       <div className="navbar-center">
         <Link href="/">
-          <img src={Wmedialogo.src} alt="Wmedia Logo" className="h-10" />
+          <Image
+            src="/Wmedia1.png"
+            alt="Wmedia Logo"
+            className="h-10 w-auto"
+            width={100}
+            height={100}
+          />
         </Link>
       </div>
       <div className="navbar-end">

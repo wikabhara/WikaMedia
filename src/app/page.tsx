@@ -1,5 +1,3 @@
-import Backgroundhero from "@/assets/img/backgroundhero.jpg";
-
 export default function Home() {
   return (
     <>
@@ -7,10 +5,10 @@ export default function Home() {
         <div
           className="hero min-h-screen"
           style={{
-            backgroundImage: `url(${Backgroundhero.src})`,
+            backgroundImage: `url('/backgroundhero.jpg')`,
           }}
         >
-          <div className="hero-overlay bg-black bg-opacity-50"></div>
+          <div className="hero-overlay bg-black/50"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
               <h1 className="mb-5 text-5xl font-bold">Welcome to WikaMedia</h1>
