@@ -2,6 +2,7 @@ import React from "react";
 import Wmedialogo from "@/assets/img/Wmedia1.png";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDropdown } from "react-icons/io";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -20,7 +21,7 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
               <a>Entertaiment</a>
@@ -32,9 +33,9 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a>
+        <Link href="/">
           <img src={Wmedialogo.src} alt="Wmedia Logo" className="h-10" />
-        </a>
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle text-xl">
