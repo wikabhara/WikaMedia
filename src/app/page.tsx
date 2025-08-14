@@ -1,48 +1,36 @@
 import Card from "@/components/card";
+import React from "react";
 
-export default function Home() {
-  const articles = [
-    {
-      image: "/backgroundhero.jpg",
-      category: "Teknologi",
-      title: "Revolusi AI di Dunia Kerja",
-      description:
-        "Kecerdasan buatan telah mengubah cara kita bekerja, dari otomatisasi hingga pengambilan keputusan.",
-      link: "/detail",
-    },
-    {
-      image: "/backgroundhero.jpg",
-      category: "Gaya Hidup",
-      title: "Tips Sehat di Tengah Kesibukan",
-      description:
-        "Menjaga kesehatan kini lebih mudah dengan beberapa tips praktis yang bisa diterapkan sehari-hari.",
-      link: "/detail",
-    },
-    {
-      image: "/backgroundhero.jpg",
-      category: "Olahraga",
-      title: "Kemenangan Dramatis di Final",
-      description:
-        "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
-      link: "/detail",
-    },
-    {
-      image: "/backgroundhero.jpg",
-      category: "Bisnis",
-      title: "Startup Lokal Tembus Pasar Global",
-      description:
-        "Sebuah startup teknologi dari Indonesia berhasil mendapatkan pendanaan dan siap bersaing di kancah internasional.",
-      link: "/detail",
-    },
-    {
-      image: "/backgroundhero.jpg",
-      category: "Seni & Budaya",
-      title: "Pameran Seni Kontemporer Dibuka",
-      description:
-        "Galeri nasional menjadi tuan rumah pameran seni yang menampilkan karya-karya seniman muda berbakat.",
-      link: "/detail",
-    },
-  ];
+interface NYTArticle {
+  uri: string;
+  url: string;
+  title: string;
+  abstract: string;
+  section: string;
+  multimedia: { url: string; format: string }[];
+}
+
+async function getHomeArticles() {
+  const apiKey = process.env.NY_API_KEY;
+  const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`;
+
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error("Gagal mengambil data dari NYT API");
+    }
+    const data = await res.json();
+    return (data.results as NYTArticle[]).filter(
+      (article) => article.title && article.abstract && article.multimedia
+    );
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const articles = await getHomeArticles();
 
   return (
     <>
@@ -72,21 +60,19 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-center mb-12">Berita Terbaru</h2>
 
         {/* Scroll */}
-        <div
-          className="flex overflow-x-auto space-x-8 snap-x snap-mandatory 
-                     scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-200 p-4 -mx-4"
-        >
+        <div className="flex overflow-x-auto space-x-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-200 p-4 -mx-4">
           {articles.map((article, index) => (
             <div
               key={index}
               className="snap-center flex-shrink-0 w-4/5 md:w-[45%] lg:w-[30%]"
             >
               <Card
-                image={article.image}
-                category={article.category}
+                key={article.uri}
+                image={article.multimedia?.[0]?.url || "/backgroundhero.jpg"}
+                category={article.section}
                 title={article.title}
-                description={article.description}
-                link={article.link}
+                description={article.abstract}
+                link={article.url}
               />
             </div>
           ))}

@@ -1,12 +1,24 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDropdown } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Navbar() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleOpenSearch = () => {
+    setIsSearchOpen(true);
+  };
+
+  const handleCloseSearch = () => {
+    setIsSearchOpen(false);
+  };
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -24,10 +36,10 @@ export default function Navbar() {
               <Link href="/about">About</Link>
             </li>
             <li>
-              <a>Entertaiment</a>
+              <Link href="/arts">Arts</Link>
             </li>
             <li>
-              <a>Sports</a>
+              <Link href="/politics">Politics</Link>
             </li>
           </ul>
         </div>
@@ -44,10 +56,35 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle text-xl">
+        <button
+          className="btn btn-ghost btn-circle text-xl"
+          onClick={handleOpenSearch}
+        >
           <FaSearch />
         </button>
       </div>
+      <dialog
+        id="search_modal"
+        className={`modal ${isSearchOpen ? "modal-open" : ""}`}
+      >
+        <div className="modal-box">
+          <h3 className="font-bold text-lg mb-4">Pencarian</h3>
+          <div className="form-control">
+            <input
+              type="text"
+              placeholder="Ketik untuk mencari berita..."
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="modal-action">
+            <button className="btn" onClick={handleCloseSearch}>
+              Tutup
+            </button>
+          </div>
+        </div>
+
+        <div className="modal-backdrop" onClick={handleCloseSearch}></div>
+      </dialog>
     </div>
   );
 }
