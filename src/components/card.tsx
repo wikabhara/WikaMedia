@@ -18,7 +18,7 @@ export default function Card({
   link,
 }: CardProps) {
   return (
-    <div className="card bg-base-100 shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+    <div className="card bg-base-100 shadow-2xs overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <figure>
         <Image
           src={image}

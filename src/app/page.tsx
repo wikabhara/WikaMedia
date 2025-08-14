@@ -26,13 +26,29 @@ export default function Home() {
         "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
       link: "/detail",
     },
+    {
+      image: "/backgroundhero.jpg",
+      category: "Olahraga",
+      title: "Kemenangan Dramatis di Final",
+      description:
+        "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
+      link: "/detail",
+    },
+    {
+      image: "/backgroundhero.jpg",
+      category: "Olahraga",
+      title: "Kemenangan Dramatis di Final",
+      description:
+        "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
+      link: "/detail",
+    },
   ];
 
   return (
     <>
       <div className="bg-base-200">
         <div
-          className="hero min-h-screen"
+          className="hero min-h-96"
           style={{
             backgroundImage: `url('/backgroundhero.jpg')`,
           }}
@@ -42,7 +58,8 @@ export default function Home() {
             <div className="max-w-md">
               <h1 className="mb-5 text-5xl font-bold">Welcome to WikaMedia</h1>
               <p className="mb-5">
-                Nikmati sumber berita terpercaya hanya untuk anda!
+                Menyajikan berita yang akurat, terpercaya, dan mendalam dari
+                seluruh dunia untuk Anda.
               </p>
             </div>
           </div>
