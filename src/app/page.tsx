@@ -28,18 +28,18 @@ export default function Home() {
     },
     {
       image: "/backgroundhero.jpg",
-      category: "Olahraga",
-      title: "Kemenangan Dramatis di Final",
+      category: "Bisnis",
+      title: "Startup Lokal Tembus Pasar Global",
       description:
-        "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
+        "Sebuah startup teknologi dari Indonesia berhasil mendapatkan pendanaan dan siap bersaing di kancah internasional.",
       link: "/detail",
     },
     {
       image: "/backgroundhero.jpg",
-      category: "Olahraga",
-      title: "Kemenangan Dramatis di Final",
+      category: "Seni & Budaya",
+      title: "Pameran Seni Kontemporer Dibuka",
       description:
-        "Timnas berhasil meraih kemenangan di menit-menit akhir dalam pertandingan yang menegangkan.",
+        "Galeri nasional menjadi tuan rumah pameran seni yang menampilkan karya-karya seniman muda berbakat.",
       link: "/detail",
     },
   ];
@@ -67,18 +67,28 @@ export default function Home() {
       </div>
 
       {/* cards */}
-      <div className="container mx-auto py-12 px-4">
-        <h2 className="text-4xl font-bold text-center mb-8">Berita Terbaru</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="container mx-auto py-16 px-4">
+        <h2 className="text-4xl font-bold text-center mb-12">Berita Terbaru</h2>
+
+        {/* Scroll */}
+        <div
+          className="flex overflow-x-auto space-x-8 snap-x snap-mandatory 
+                     scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-200 p-4 -mx-4"
+        >
           {articles.map((article, index) => (
-            <Card
+            <div
               key={index}
-              image={article.image}
-              category={article.category}
-              title={article.title}
-              description={article.description}
-              link={article.link}
-            />
+              className="snap-center flex-shrink-0 w-4/5 md:w-[45%] lg:w-[30%]"
+            >
+              <Card
+                image={article.image}
+                category={article.category}
+                title={article.title}
+                description={article.description}
+                link={article.link}
+              />
+            </div>
           ))}
         </div>
       </div>
