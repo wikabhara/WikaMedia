@@ -37,16 +37,6 @@ export async function generateMetadata({
   };
 }
 
-// export default async function SearchPage({
-//   params,
-// }: {
-//   params: Promise<{ query: string }>;
-// }) {
-//   const query = (await params).query;
-
-//   const decodedQuery = decodeURIComponent(query);
-//   const articles = await getSearchResults(decodedQuery);
-
 async function getSearchResults(query: string) {
   const apiKey = process.env.NY_API_KEY;
   if (!apiKey) {
