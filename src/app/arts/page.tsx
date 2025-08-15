@@ -32,13 +32,21 @@ export default async function ArtsPage() {
 
   return (
     <>
-      <div className="hero min-h-[30vh] bg-base-200">
-        <div className="hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Dunia Dalam Seni</h1>
-            <p className="py-6">
-              Ikuti berita seni terhangat dari New York Times.
-            </p>
+      <div className="bg-base-200">
+        <div
+          className="hero min-h-96"
+          style={{
+            backgroundImage: `url('/arts.jpg')`,
+          }}
+        >
+          <div className="hero-overlay bg-black/50"></div>
+          <div className="hero-content text-center text-neutral-content">
+            <div className="max-w-md">
+              <h1 className="mb-5 text-5xl font-bold">Dunia Dalam Seni</h1>
+              <p className="mb-5">
+                Ikuti berita kesenian terhangat dari New York Times.
+              </p>
+            </div>
           </div>
         </div>
       </div>
