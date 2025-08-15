@@ -24,7 +24,7 @@ async function getSearchResults(query: string) {
   const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apiKey}`;
 
   try {
-    const res = await fetch(url, { cache: "force-cache" });
+    const res = await fetch(url, { next: { revalidate: 300 } });
     if (!res.ok) {
       throw new Error(`Failed to fetch search results: ${res.statusText}`);
     }
