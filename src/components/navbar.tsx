@@ -1,3 +1,5 @@
+// src/components/navbar.tsx
+
 "use client";
 
 import React, { useState } from "react";
@@ -6,6 +8,22 @@ import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDropdown } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
+
+const categories = [
+  { name: "Home", href: "/" },
+  { name: "Arts", href: "/category/arts" },
+  { name: "Automobiles", href: "/category/automobiles" },
+  { name: "Books", href: "/category/books" },
+  { name: "Business", href: "/category/business" },
+  { name: "Fashion", href: "/category/fashion" },
+  { name: "Sports", href: "/category/sports" },
+  { name: "Food", href: "/category/food" },
+  { name: "Health", href: "/category/health" },
+  { name: "Politics", href: "/category/politics" },
+  { name: "Science", href: "/category/science" },
+  { name: "Technology", href: "/category/technology" },
+  { name: "World", href: "/category/world" },
+];
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -45,15 +63,11 @@ export default function Navbar() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <Link href="/automobiles">Automobiles</Link>
-              </li>
-              <li>
-                <Link href="/arts">Arts</Link>
-              </li>
-              <li>
-                <Link href="/politics">Politics</Link>
-              </li>
+              {categories.map((category) => (
+                <li key={category.href}>
+                  <Link href={category.href}>{category.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -84,7 +98,6 @@ export default function Navbar() {
       >
         <div className="modal-box">
           <h3 className="font-bold text-lg mb-4">Pencarian</h3>
-
           <form onSubmit={handleSearchSubmit}>
             <div className="form-control">
               <input
