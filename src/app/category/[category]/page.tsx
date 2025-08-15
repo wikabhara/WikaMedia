@@ -54,9 +54,9 @@ async function getCategoryArticles(category: string) {
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const category = decodeURIComponent(params.category);
+  const category = decodeURIComponent((await params).category);
   const articles = await getCategoryArticles(category);
 
   const currentCategoryInfo = categoryInfo[category] || {
