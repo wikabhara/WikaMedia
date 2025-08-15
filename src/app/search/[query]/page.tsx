@@ -14,7 +14,7 @@ interface NYTSearchArticle {
   headline: { main: string };
   abstract: string;
   section_name: string;
-  multimedia: NYTMultimedia;
+  multimedia: NYTMultimedia[];
 }
 
 interface SearchPageProps {
