@@ -14,7 +14,7 @@ interface NYTSearchArticle {
   headline: { main: string };
   abstract: string;
   section_name: string;
-  multimedia: NYTMultimedia[];
+  multimedia: NYTMultimedia;
 }
 
 interface SearchPageProps {
@@ -25,8 +25,11 @@ interface SearchPageProps {
 
 export async function generateMetadata({
   params,
-}: SearchPageProps): Promise<Metadata> {
-  const decodedQuery = decodeURIComponent(params.query);
+}: {
+  params: Promise<{ query: string }>;
+}): Promise<Metadata> {
+  const query = (await params).query;
+  const decodedQuery = decodeURIComponent(query);
   return {
     title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
     description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
