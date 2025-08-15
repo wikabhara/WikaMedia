@@ -11,7 +11,7 @@ const categoryInfo: {
   technology: { title: "Dunia Dalam Teknologi", image: "/technology.jpg" },
   books: { title: "Dunia Dalam Books", image: "/books.jpg" },
   fashion: { title: "Dunia Dalam Fashion", image: "/fashion.jpg" },
-  sports: { title: "Dunia Dalam Sports", image: "/sports.jpg" },
+
   food: { title: "Dunia Dalam Food", image: "/food.jpg" },
   health: { title: "Dunia Dalam Health", image: "/health.jpg" },
   science: { title: "Dunia Dalam Science", image: "/science.jpg" },

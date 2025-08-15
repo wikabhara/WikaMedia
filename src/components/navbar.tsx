@@ -14,7 +14,7 @@ const categories = [
   { name: "Books", href: "/category/books" },
   { name: "Business", href: "/category/business" },
   { name: "Fashion", href: "/category/fashion" },
-  { name: "Sports", href: "/category/sports" },
+
   { name: "Food", href: "/category/food" },
   { name: "Health", href: "/category/health" },
   { name: "Politics", href: "/category/politics" },
