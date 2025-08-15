@@ -56,7 +56,7 @@ export default async function CategoryPage({
 }: {
   params: Promise<{ category: string }>;
 }) {
-  const category = decodeURIComponent((await params).category);
+  const category = (await params).category;
   const articles = await getCategoryArticles(category);
 
   const currentCategoryInfo = categoryInfo[category] || {
