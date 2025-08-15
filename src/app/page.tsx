@@ -30,6 +30,7 @@ async function getHomeArticles() {
     const data = await res.json();
     return data.results as NYTArticle[];
   } catch (error) {
+    console.error(error);
     Swal.fire("Gagal mengambil data search dari NYT API");
     return [];
   }
@@ -60,12 +61,9 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* cards */}
-
       <div className="container mx-auto py-16 px-4">
         <h2 className="text-4xl font-bold text-center mb-12">Berita Terbaru</h2>
 
-        {/* Scroll */}
         <div className="flex overflow-x-auto space-x-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-200 p-4 -mx-4">
           {articles.map((article, index) => (
             <div
