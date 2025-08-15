@@ -8,21 +8,12 @@ export const metadata: Metadata = {
   description: "Ikuti berita politik terhangat dari New York Times.",
 };
 
-interface NYTArticle {
-  uri: string;
-  url: string;
-  title: string;
-  abstract: string;
-  section: string;
-  multimedia: { url: string; format: string }[];
-}
-
 async function getPoliticsArticles() {
   const apiKey = process.env.NY_API_KEY;
   const url = `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${apiKey}`;
 
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { cache: "force-cache" });
     if (!res.ok) {
       throw new Error("Gagal mengambil data dari NYT API");
     }

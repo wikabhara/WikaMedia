@@ -3,27 +3,6 @@ import React from "react";
 import type { Metadata } from "next";
 import Swal from "sweetalert2";
 
-interface NYTMultimedia {
-  default?: {
-    url: string;
-  };
-}
-
-interface NYTSearchArticle {
-  _id: string;
-  web_url: string;
-  headline: { main: string };
-  abstract: string;
-  section_name: string;
-  multimedia: NYTMultimedia;
-}
-
-interface SearchPageProps {
-  params: {
-    query: string;
-  };
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -45,7 +24,7 @@ async function getSearchResults(query: string) {
   const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apiKey}`;
 
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { cache: "force-cache" });
     if (!res.ok) {
       throw new Error(`Failed to fetch search results: ${res.statusText}`);
     }

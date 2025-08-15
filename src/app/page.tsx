@@ -1,6 +1,7 @@
 import Card from "@/components/card";
 import React from "react";
 import type { Metadata } from "next";
+import Swal from "sweetalert2";
 
 export const metadata: Metadata = {
   title: "WikaMedia - Berita Terkini dari Seluruh Dunia",
@@ -22,14 +23,14 @@ async function getHomeArticles() {
   const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`;
 
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { cache: "force-cache" });
     if (!res.ok) {
       throw new Error("Gagal mengambil data dari NYT API");
     }
     const data = await res.json();
     return data.results as NYTArticle[];
   } catch (error) {
-    console.error(error);
+    Swal.fire("Gagal mengambil data search dari NYT API");
     return [];
   }
 }
