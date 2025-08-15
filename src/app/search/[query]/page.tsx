@@ -16,19 +16,16 @@ interface NYTSearchArticle {
   section_name: string;
   multimedia: NYTMultimedia;
 }
-// Tambahkan interface ini
+
 interface SearchPageProps {
   params: {
     query: string;
   };
 }
-// Tambahkan interface ini
 
 export async function generateMetadata({
   params,
-}: {
-  params: { query: string };
-}): Promise<Metadata> {
+}: SearchPageProps): Promise<Metadata> {
   const decodedQuery = decodeURIComponent(params.query);
   return {
     title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
