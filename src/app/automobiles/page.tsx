@@ -1,6 +1,7 @@
 import Card from "@/components/card";
 import React from "react";
 import type { Metadata } from "next";
+import Swal from "sweetalert2";
 
 export const metadata: Metadata = {
   title: "Dunia Dalam Otomotif",
@@ -28,7 +29,7 @@ async function getAutomobilesArticles() {
     const data = await res.json();
     return data.results as NYTArticle[];
   } catch (error) {
-    console.error(error);
+    Swal.fire("Gagal mengambil data dari NYT API");
     return [];
   }
 }

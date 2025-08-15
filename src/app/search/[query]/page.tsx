@@ -1,6 +1,7 @@
 import Card from "@/components/card";
 import React from "react";
 import type { Metadata } from "next";
+import Swal from "sweetalert2";
 
 interface NYTMultimedia {
   default?: {
@@ -51,7 +52,7 @@ async function getSearchResults(query: string) {
     const data = await res.json();
     return data.response.docs as NYTSearchArticle[];
   } catch (error) {
-    console.error(error);
+    Swal.fire("Gagal mengambil data search dari NYT API");
     return [];
   }
 }
