@@ -16,6 +16,13 @@ interface NYTSearchArticle {
   section_name: string;
   multimedia: NYTMultimedia;
 }
+// Tambahkan interface ini
+interface SearchPageProps {
+  params: {
+    query: string;
+  };
+}
+// Tambahkan interface ini
 
 export async function generateMetadata({
   params,
@@ -49,11 +56,7 @@ async function getSearchResults(query: string) {
   }
 }
 
-export default async function SearchPage({
-  params,
-}: {
-  params: { query: string };
-}) {
+export default async function SearchPage({ params }: SearchPageProps) {
   const decodedQuery = decodeURIComponent(params.query);
   const articles = await getSearchResults(decodedQuery);
 
