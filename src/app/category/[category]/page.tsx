@@ -1,21 +1,19 @@
-// src/app/category/[category]/page.tsx
-
 import Card from "@/components/card";
 import React from "react";
 import type { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string };
-}): Promise<Metadata> {
-  const category = decodeURIComponent(params.category);
-  const title = category.charAt(0).toUpperCase() + category.slice(1);
-  return {
-    title: `Dunia Dalam ${title}`,
-    description: `Ikuti berita terhangat kategori ${title} dari New York Times.`,
-  };
-}
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: { category: string };
+// }): Promise<Metadata> {
+//   const category = decodeURIComponent(params.category);
+//   const title = category.charAt(0).toUpperCase() + category.slice(1);
+//   return {
+//     title: `Dunia Dalam ${title}`,
+//     description: `Ikuti berita terhangat kategori ${title} dari New York Times.`,
+//   };
+// }
 
 const categoryInfo: {
   [key: string]: { title: string; image: string };
