@@ -24,18 +24,28 @@ interface SearchPageProps {
   };
 }
 
-// export async function generateMetadata({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ query: string }>;
+}): Promise<Metadata> {
+  const query = (await params).query;
+  const decodedQuery = decodeURIComponent(query);
+  return {
+    title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
+    description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
+  };
+}
+
+// export default async function SearchPage({
 //   params,
 // }: {
 //   params: Promise<{ query: string }>;
-// }): Promise<Metadata> {
+// }) {
 //   const query = (await params).query;
+
 //   const decodedQuery = decodeURIComponent(query);
-//   return {
-//     title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
-//     description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
-//   };
-// }
+//   const articles = await getSearchResults(decodedQuery);
 
 async function getSearchResults(query: string) {
   const apiKey = process.env.NY_API_KEY;
