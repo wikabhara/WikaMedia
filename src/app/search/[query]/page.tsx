@@ -24,18 +24,18 @@ interface SearchPageProps {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ query: string }>;
-}): Promise<Metadata> {
-  const query = (await params).query;
-  const decodedQuery = decodeURIComponent(query);
-  return {
-    title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
-    description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
-  };
-}
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Promise<{ query: string }>;
+// }): Promise<Metadata> {
+//   const query = (await params).query;
+//   const decodedQuery = decodeURIComponent(query);
+//   return {
+//     title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
+//     description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
+//   };
+// }
 
 async function getSearchResults(query: string) {
   const apiKey = process.env.NY_API_KEY;
@@ -52,13 +52,20 @@ async function getSearchResults(query: string) {
     const data = await res.json();
     return data.response.docs as NYTSearchArticle[];
   } catch (error) {
+    console.error(error);
     Swal.fire("Gagal mengambil data search dari NYT API");
     return [];
   }
 }
 
-export default async function SearchPage({ params }: SearchPageProps) {
-  const decodedQuery = decodeURIComponent(params.query);
+export default async function SearchPage({
+  params,
+}: {
+  params: Promise<{ query: string }>;
+}) {
+  const query = (await params).query;
+
+  const decodedQuery = decodeURIComponent(query);
   const articles = await getSearchResults(decodedQuery);
 
   return (

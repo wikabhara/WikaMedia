@@ -29,6 +29,7 @@ async function getArtsArticles() {
     const data = await res.json();
     return data.results as NYTArticle[];
   } catch (error) {
+    console.error(error);
     Swal.fire("Gagal mengambil data dari NYT API");
     return [];
   }
