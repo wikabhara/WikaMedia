@@ -60,7 +60,7 @@ export default async function SearchPage({
   return (
     <div className="container mx-auto py-16 px-4">
       <h1 className="text-4xl font-bold mb-2">Hasil Pencarian untuk:</h1>
-      <p className="text-2xl text-gray-500 mb-12">"{decodedQuery}"</p>
+      <p className="text-2xl text-gray-500 mb-12">{`"${decodedQuery}"`}</p>
 
       {articles.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
