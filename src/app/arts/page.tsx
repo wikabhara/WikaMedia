@@ -1,5 +1,11 @@
 import Card from "@/components/card";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dunia Dalam Seni",
+  description: "Ikuti berita kesenian terhangat dari New York Times.",
+};
 
 interface NYTArticle {
   uri: string;

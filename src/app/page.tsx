@@ -1,5 +1,12 @@
 import Card from "@/components/card";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "WikaMedia - Berita Terkini dari Seluruh Dunia",
+  description:
+    "WikaMedia menyajikan berita yang akurat, terpercaya, dan mendalam dari berbagai penjuru dunia. Dapatkan informasi terbaru tentang politik, seni, otomotif, dan banyak lagi.",
+};
 
 interface NYTArticle {
   uri: string;
@@ -20,9 +27,7 @@ async function getHomeArticles() {
       throw new Error("Gagal mengambil data dari NYT API");
     }
     const data = await res.json();
-    return (data.results as NYTArticle[]).filter(
-      (article) => article.title && article.abstract && article.multimedia
-    );
+    return data.results as NYTArticle[];
   } catch (error) {
     console.error(error);
     return [];
@@ -46,8 +51,8 @@ export default async function Home() {
             <div className="max-w-md">
               <h1 className="mb-5 text-5xl font-bold">Welcome to WikaMedia</h1>
               <p className="mb-5">
-                Menyajikan berita yang akurat, terpercaya, dan mendalam dari
-                seluruh dunia untuk Anda.
+                Menyajikan berita yang akurat, terpercaya, dan tidak mendalam
+                dari seluruh dunia untuk Anda.
               </p>
             </div>
           </div>

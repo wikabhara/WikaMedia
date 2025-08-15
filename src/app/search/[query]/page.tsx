@@ -1,5 +1,6 @@
 import Card from "@/components/card";
 import React from "react";
+import type { Metadata } from "next";
 
 interface NYTMultimedia {
   default?: {
@@ -14,6 +15,18 @@ interface NYTSearchArticle {
   abstract: string;
   section_name: string;
   multimedia: NYTMultimedia;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { query: string };
+}): Promise<Metadata> {
+  const decodedQuery = decodeURIComponent(params.query);
+  return {
+    title: `Hasil Pencarian untuk "${decodedQuery}" - WikaMedia`,
+    description: `Menampilkan artikel berita dan hasil pencarian untuk "${decodedQuery}" di WikaMedia, sumber berita terpercaya Anda.`,
+  };
 }
 
 async function getSearchResults(query: string) {

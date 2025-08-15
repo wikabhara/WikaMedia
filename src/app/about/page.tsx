@@ -1,5 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tentang WikaMedia - Visi, Misi, dan Tim Kami",
+  description:
+    "Pelajari lebih lanjut tentang WikaMedia, sumber berita terpercaya Anda. Temukan visi, misi, dan tim di balik layar yang berdedikasi untuk menyajikan jurnalisme berkualitas.",
+};
 
 const teamMembers = [
   {
@@ -27,7 +34,7 @@ export default function AboutPage() {
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">Tentang WikaMedia</h1>
             <p className="py-6">
-              Menyajikan berita yang akurat, terpercaya, dan mendalam dari
+              Menyajikan berita yang akurat, terpercaya, dan tidak mendalam dari
               seluruh dunia untuk Anda.
             </p>
           </div>
